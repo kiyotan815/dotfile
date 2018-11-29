@@ -2,10 +2,12 @@ alias d='docker'
 alias dc='docker-compose'
 
 alias c='clear'
+alias e='exit'
 alias ls='ls -G'
 alias ll='ls -lG'
 alias la='ls -laG'
 alias home='cd $HOME'
+alias vin='nvim'
 
 alias ga='git add -A'
 alias gm='git commit -m '

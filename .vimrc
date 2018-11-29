@@ -1,35 +1,116 @@
-call plug#begin ('~/.vim/plugged')
+"call plug#begin ('~/.vim/plugged')
+"
+"  "ファイルオープンを便利に
+"  Plug 'Shougo/unite.vim'
+"  "Unite.vimで最近使ったファイルを表示できるようにする
+"  Plug 'Shougo/neomru.vim'
+"  "colorschema
+"  Plug 'ujihisa/unite-colorscheme'
+"  "color solarized
+"  Plug 'altercation/vim-colors-solarized'
+"  "color twilight
+"  Plug 'vim-scripts/twilight'
+"  "color molokai
+"  Plug 'tomasr/molokai'
+"  "color material
+"  Plug 'jdkanani/vim-material-theme'
+"  "color nefertiti
+"  Plug 'jeetsukumaran/vim-nefertiti'
+"  "インデントを見やすくしてくれる
+"  Plug 'nathanaelkane/vim-indent-guides'
+"  "サイドバーを表示（プロジェクト）
+"  Plug 'scrooloose/nerdtree'
+"  "vim上からgit command
+"  Plug 'tpope/vim-fugitive'
+"  "html css 爆速
+"  Plug 'mattn/emmet-vim'
+"  "入力補完
+"  Plug 'Shougo/neocomplete.vim'
+"  " 隠しファイルをデフォルトで表示させる
+"  let NERDTreeShowHidden = 1
+"   ruby"
+"  Plug 'vim-ruby/vim-ruby'
+"   rails"
+"  Plug 'tpope/vim-rails'
+"   slim"
+"  Plug 'slim-template/vim-slim'
+"
+"call plug#end()
+"
 
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" Required:
+set runtimepath+=/Users/kiyotaibaragi/.cache/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state('/Users/kiyotaibaragi/.cache/dein')
+  call dein#begin('/Users/kiyotaibaragi/.cache/dein')
+
+  " Let dein manage dein
+  " Required:
+  call dein#add('/Users/kiyotaibaragi/.cache/dein/repos/github.com/Shougo/dein.vim')
+
+  " Add or remove your plugins here like this:
+  "call dein#add('Shougo/neosnippet.vim')
+  "call dein#add('Shougo/neosnippet-snippets')
+  
   "ファイルオープンを便利に
-  Plug 'Shougo/unite.vim'
+  call dein#add('Shougo/unite.vim')
   "Unite.vimで最近使ったファイルを表示できるようにする
-  Plug 'Shougo/neomru.vim'
+  call dein#add('Shougo/neomru.vim')
   "colorschema
-  Plug 'ujihisa/unite-colorscheme'
+  call dein#add('ujihisa/unite-colorscheme')
   "color solarized
-  Plug 'altercation/vim-colors-solarized'
+  call dein#add('altercation/vim-colors-solarized')
   "color twilight
-  Plug 'vim-scripts/twilight'
+  call dein#add('vim-scripts/twilight')
   "color molokai
-  Plug 'tomasr/molokai'
+  call dein#add('tomasr/molokai')
   "color material
-  Plug 'jdkanani/vim-material-theme'
+  call dein#add('jdkanani/vim-material-theme')
   "color nefertiti
-  Plug 'jeetsukumaran/vim-nefertiti'
+  call dein#add('jeetsukumaran/vim-nefertiti')
   "インデントを見やすくしてくれる
-  Plug 'nathanaelkane/vim-indent-guides'
+  call dein#add('nathanaelkane/vim-indent-guides')
   "サイドバーを表示（プロジェクト）
-  Plug 'scrooloose/nerdtree'
+  call dein#add('scrooloose/nerdtree')
   "vim上からgit command
-  Plug 'tpope/vim-fugitive'
+  call dein#add('tpope/vim-fugitive')
   "html css 爆速
-  Plug 'mattn/emmet-vim'
+  call dein#add('mattn/emmet-vim')
   "入力補完
-  Plug 'Shougo/neocomplete.vim'
+  call dein#add('Shougo/neocomplete.vim')
   " 隠しファイルをデフォルトで表示させる
   let NERDTreeShowHidden = 1
+  " ruby"
+  call dein#add('vim-ruby/vim-ruby')
+  " rails"
+  call dein#add('tpope/vim-rails')
+  " slim"
+  call dein#add('slim-template/vim-slim')
 
-call plug#end()
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+"End dein Scripts-------------------------
+"
+"
 
 colorscheme nefertiti
 syntax enable
@@ -63,3 +144,4 @@ set fileformats=unix,dos,mac
 
 
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
