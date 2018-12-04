@@ -109,6 +109,7 @@ alias ls='ls -G'
 alias ll='ls -lG'
 alias la='ls -laG'
 alias home='cd $HOME'
+alias vim='nvim'
 
 alias ga='git add -A'
 alias gm='git commit -m '
