@@ -1,96 +1,111 @@
-The NERDTree
-=============
+# fugitive.vim
 
-Introduction
-------------
+I'm not going to lie to you; fugitive.vim may very well be the best
+Git wrapper of all time.  Check out these features:
 
-The NERDTree is a file system explorer for the Vim editor. Using this plugin,
-users can visually browse complex directory hierarchies, quickly open files for
-reading or editing, and perform basic file system operations.
+View any blob, tree, commit, or tag in the repository with `:Gedit` (and
+`:Gsplit`, `:Gvsplit`, `:Gtabedit`, ...).  Edit a file in the index and
+write to it to stage the changes.  Use `:Gdiff` to bring up the staged
+version of the file side by side with the working tree version and use
+Vim's diff handling capabilities to stage a subset of the file's
+changes.
 
-This plugin can also be extended with custom mappings using a special API. The
-details of this API and of other NERDTree features are described in the
-included documentation.
+Bring up the output of `git status` with `:Gstatus`.  Press `-` to
+`add`/`reset` a file's changes, or `p` to `add`/`reset` `--patch`.  Use
+`:Gcommit %` to commit the current file, editing the commit message inside
+the currently running Vim.
 
-![NERDTree Screenshot](https://github.com/scrooloose/nerdtree/raw/master/screenshot.png)
+`:Gblame` brings up an interactive vertical split with `git blame`
+output.  Press enter on a line to edit the commit where the line
+changed, or `o` to open it in a split.  When you're done, use `:Gedit`
+in the historic buffer to go back to the work tree version.
 
-Installation
-------------
+`:Gmove` does a `git mv` on a file and simultaneously renames the
+buffer.  `:Gdelete` does a `git rm` on a file and simultaneously deletes
+the buffer.
 
-#### [pathogen.vim](https://github.com/tpope/vim-pathogen)
+Use `:Ggrep` to search the work tree (or any arbitrary commit) with
+`git grep`, skipping over that which is not tracked in the repository.
+`:Glog` loads all previous revisions of a file into the quickfix list so
+you can iterate over them and watch the file evolve!
 
-    git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+`:Gread` is a variant of `git checkout -- filename` that operates on the
+buffer rather than the filename.  This means you can use `u` to undo it
+and you never get any warnings about the file changing outside Vim.
+`:Gwrite` writes to both the work tree and index versions of a file,
+making it like `git add` when called from a work tree file and like
+`git checkout` when called from the index or a blob in history.
 
-Then reload Vim, run `:helptags ~/.vim/bundle/nerdtree/doc/` or `:Helptags`, and check out `:help NERDTree.txt`.
+Use `:Gbrowse` to open the current file on the web front-end of your favorite
+hosting provider, with optional line range (try it in visual mode!).  Plugins
+are available for popular providers such as [GitHub][rhubarb.vim],
+[GitLab][fugitive-gitlab.vim], and [Bitbucket][fubitive.vim].
 
+[rhubarb.vim]: https://github.com/tpope/vim-rhubarb
+[fugitive-gitlab.vim]: https://github.com/shumphrey/fugitive-gitlab.vim
+[fubitive.vim]: https://github.com/tommcdo/vim-fubitive
 
-#### [apt-vim](https://github.com/egalpin/apt-vim)
+Add `%{FugitiveStatusline()}` to `'statusline'` to get an indicator
+with the current branch in (surprise!) your statusline.
 
-    apt-vim install -y https://github.com/scrooloose/nerdtree.git
+Last but not least, there's `:Git` for running any arbitrary command,
+and `Git!` to open the output of a command in a temp file.
 
-F.A.Q.
-------
+## Screencasts
 
-> Is there any support for `git` flags?
+* [A complement to command line git](http://vimcasts.org/e/31)
+* [Working with the git index](http://vimcasts.org/e/32)
+* [Resolving merge conflicts with vimdiff](http://vimcasts.org/e/33)
+* [Browsing the git object database](http://vimcasts.org/e/34)
+* [Exploring the history of a git repository](http://vimcasts.org/e/35)
 
-Yes, install [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin).
+## Installation
 
----
+If you don't have a preferred installation method, one option is to install
+[pathogen.vim](https://github.com/tpope/vim-pathogen), and then copy
+and paste:
 
-> Can I have the nerdtree on every tab automatically?
+    cd ~/.vim/bundle
+    git clone https://github.com/tpope/vim-fugitive.git
+    vim -u NONE -c "helptags vim-fugitive/doc" -c q
 
-Nope. If this is something you want then chances are you aren't using tabs and
-buffers as they were intended to be used. Read this
-http://stackoverflow.com/questions/102384/using-vims-tabs-like-buffers
+If your Vim version is below 7.2, I recommend also installing
+[vim-git](https://github.com/tpope/vim-git) for syntax highlighting and
+other Git niceties.
 
-If you are interested in this behaviour then consider [vim-nerdtree-tabs](https://github.com/jistr/vim-nerdtree-tabs)
+## FAQ
 
----
-> How can I open a NERDTree automatically when vim starts up?
+> Why don't any of the commands exist?
 
-Stick this in your vimrc: `autocmd vimenter * NERDTree`
+Fugitive cares about the current file, not the current working directory.
+Edit a file from the repository.  To avoid the blank window problem, favor
+commands like `:split` and `:tabedit` over commands like `:new` and `:tabnew`.
 
----
-> How can I open a NERDTree automatically when vim starts up if no files were specified?
+> Here's a patch that automatically opens the quickfix window after
+> `:Ggrep`.
 
-Stick this in your vimrc:
+This is a great example of why I recommend asking before patching.
+There are valid arguments to be made both for and against automatically
+opening the quickfix window.  Whenever I have to make an arbitrary
+decision like this, I ask what Vim would do.  And Vim does not open a
+quickfix window after `:grep`.
 
-    autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+Luckily, it's easy to implement the desired behavior without changing
+fugitive.vim.  The following autocommand will cause the quickfix window
+to open after any grep invocation:
 
-Note: Now start vim with plain `vim`, not `vim .`
+    autocmd QuickFixCmdPost *grep* cwindow
 
----
-> How can I open NERDTree automatically when vim starts up on opening a directory?
+## Self-Promotion
 
-    autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+Like fugitive.vim? Follow the repository on
+[GitHub](https://github.com/tpope/vim-fugitive) and vote for it on
+[vim.org](http://www.vim.org/scripts/script.php?script_id=2975).  And if
+you're feeling especially charitable, follow [tpope](http://tpo.pe/) on
+[Twitter](http://twitter.com/tpope) and
+[GitHub](https://github.com/tpope).
 
-This window is tab-specific, meaning it's used by all windows in the tab. This trick also prevents NERDTree from hiding when first selecting a file.
+## License
 
----
-> How can I map a specific key or shortcut to open NERDTree?
-
-Stick this in your vimrc to open NERDTree with `Ctrl+n` (you can set whatever key you want):
-
-    map <C-n> :NERDTreeToggle<CR>
-
----
-> How can I close vim if the only window left open is a NERDTree?
-
-Stick this in your vimrc:
-
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
----
-> Can I have different highlighting for different file extensions?
-
-See here: https://github.com/scrooloose/nerdtree/issues/433#issuecomment-92590696
-
----
-> How can I change default arrows?
-
-Use these variables in your vimrc. Note that below are default arrow symbols
-
-    let g:NERDTreeDirArrowExpandable = '▸'
-    let g:NERDTreeDirArrowCollapsible = '▾'
+Copyright (c) Tim Pope.  Distributed under the same terms as Vim itself.
+See `:help license`.

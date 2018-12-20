@@ -2,7 +2,10 @@
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 hook_add = '''
+let g:deoplete#enable_at_start_up = 1
+let g:deoplete#max_list = 1000
 let g:deoplete#auto_complete_delay = 0
+set previewheight=5
 inoremap <expr><tab> pumvisible() ? "\<C-n>" :
         \ neosnippet#expandable_or_jumpable() ?
         \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
@@ -47,6 +50,10 @@ repo = 'tpope/vim-endwise'
 on_i = 1
 on_ft = ['ruby']
 
+[[plugins]]
+repo = 'tpope/vim-rails'
+on_ft = ['ruby']
+
 
 # Rubyのメソッドの定義元にジャンプ
 [[plugins]]
@@ -63,10 +70,14 @@ hook_source = '''
     set conceallevel=2 concealcursor=niv
   endif
 '''
-on_i  = 1
+on_i = 1
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
+hook_add = '''
+  let g:neosnippet#snippets_directory='~/dotfiles/snippets/'
+'''
+on_i = 1
 
 [[plugins]]
 repo = 'takkii/ruby-dictionary3'

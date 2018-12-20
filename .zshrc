@@ -103,6 +103,8 @@ source $ZSH/oh-my-zsh.sh
 alias d='docker'
 alias dc='docker-compose'
 
+alias be='bundle exec'
+alias bi='bundle install'
 alias c='clear'
 alias e='exit'
 alias ls='ls -G'
@@ -116,8 +118,8 @@ alias gm='git commit -m '
 alias gs='git status'
 alias gc='git checkout'
 alias gb='git branch'
+alias gpo='git push origin'
 
 alias rs='rails s'
 alias rc='rails console'
-alias be='bundle exec'
 

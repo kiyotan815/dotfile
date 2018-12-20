@@ -8,8 +8,12 @@ let g:dein#_runtime_path = '/Users/kiyotaibaragi/dotfiles/.vim/dein/.cache/init.
 let g:dein#_cache_path = '/Users/kiyotaibaragi/dotfiles/.vim/dein/.cache/init.vim'
 let &runtimepath = '/Users/kiyotaibaragi/.config/nvim,/etc/xdg/nvim,/Users/kiyotaibaragi/.local/share/nvim/site,/usr/local/share/nvim/site,/usr/share/nvim/site,/Users/kiyotaibaragi/dotfiles/.vim/dein/repos/github.com/Shougo/dein.vim,/Users/kiyotaibaragi/dotfiles/.vim/dein/.cache/init.vim/.dein,/usr/local/Cellar/neovim/0.3.1/share/nvim/runtime,/Users/kiyotaibaragi/dotfiles/.vim/dein/.cache/init.vim/.dein/after,/usr/share/nvim/site/after,/usr/local/share/nvim/site/after,/Users/kiyotaibaragi/.local/share/nvim/site/after,/etc/xdg/nvim/after,/Users/kiyotaibaragi/.config/nvim/after'
 filetype off
+  let g:neosnippet#snippets_directory='~/dotfiles/snippets/'
 let g:monster#completion#rcodetools#backend = "async_rct_complete"
 let g:deoplete#sources#omni#input_patterns = { "ruby" : '[^. *\t]\.\w*\|\h\w*::',}
+let g:deoplete#enable_at_start_up = 1
+let g:deoplete#max_list = 1000
 let g:deoplete#auto_complete_delay = 0
+set previewheight=5
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ?    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
-autocmd dein-events InsertEnter * call dein#autoload#_on_event("InsertEnter", ['deoplete.nvim', 'vim-monster', 'vim-endwise', 'neosnippet'])
+autocmd dein-events InsertEnter * call dein#autoload#_on_event("InsertEnter", ['deoplete.nvim', 'vim-monster', 'vim-endwise', 'neosnippet', 'neosnippet-snippets'])

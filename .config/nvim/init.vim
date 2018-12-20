@@ -67,6 +67,33 @@ set fileformats=unix,dos,mac
 
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 inoremap jj <Esc>
+noremap <S-h>   ^
+noremap <S-l>   $
+
+"Unite
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable =1
+let g:unite_source_file_mru_limit = 200
+nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+"unite -rails
+nnoremap <buffer><C-H><C-H><C-H>  :<C-U>Unite rails/view<CR>
+nnoremap <buffer><C-H><C-H>       :<C-U>Unite rails/model<CR>
+nnoremap <buffer><C-H>            :<C-U>Unite rails/controller<CR>
+
+nnoremap <buffer><C-H>c           :<C-U>Unite rails/config<CR>
+nnoremap <buffer><C-H>s           :<C-U>Unite rails/spec<CR>
+nnoremap <buffer><C-H>m           :<C-U>Unite rails/db -input=migrate<CR>
+nnoremap <buffer><C-H>l           :<C-U>Unite rails/lib<CR>
+nnoremap <buffer><expr><C-H>g     ':e '.b:rails_root.'/Gemfile<CR>'
+nnoremap <buffer><expr><C-H>r     ':e '.b:rails_root.'/config/routes.rb<CR>'
+nnoremap <buffer><expr><C-H>se    ':e '.b:rails_root.'/db/seeds.rb<CR>'
+nnoremap <buffer><C-H>ra          :<C-U>Unite rails/rake<CR>
+nnoremap <buffer><C-H>h           :<C-U>Unite rails/heroku<CR>
+
+
 
 " mapping
 nmap n <Plug>(anzu-n-with-echo)
@@ -84,15 +111,23 @@ nnoremap ]q :cnext<CR>       " 次へ
 nnoremap [Q :<C-u>cfirst<CR> " 最初へ
 nnoremap ]Q :<C-u>clast<CR>  " 最後へ
 
+" tagsジャンプの時に複数ある時は一覧表示
+nnoremap <C-]> g<C-]>
+
 " vimgrep quickfix-w 自動表示
 autocmd QuickFixCmdPost *grep* cwindow
 
 
 "set completeopt+=noinsert
-let g:neosnippet#snippets_directory = '~/dotfiles/snippets/'
 
 " f検索　大文字小文字判別しない
 let g:clever_f_ignore_case = 1
 
-
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_start_length = 1
+
+"Buffer
+nnoremap <silent> <C-j> :bprev<CR>
+nnoremap <silent> <C-k> :bnext<CR>
+
+
