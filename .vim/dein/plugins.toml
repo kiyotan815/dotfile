@@ -79,6 +79,7 @@ repo = 'mattn/emmet-vim'
 [[plugins]]
 repo = 'ngmy/vim-rubocop'
 
+
 # unite rails
 [[plugins]]
 repo = 'basyura/unite-rails'

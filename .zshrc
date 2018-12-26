@@ -120,6 +120,11 @@ alias gc='git checkout'
 alias gb='git branch'
 alias gpo='git push origin'
 
+# rails
 alias rs='rails s'
 alias rc='rails console'
+alias rg='rails g'
+alias rdm='rails db:migrate'
+alias rds='rails db:seed'
+alias rr='rails routes'
 

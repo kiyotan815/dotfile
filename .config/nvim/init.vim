@@ -78,21 +78,24 @@ nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-"unite -rails
-nnoremap <buffer><C-H><C-H><C-H>  :<C-U>Unite rails/view<CR>
-nnoremap <buffer><C-H><C-H>       :<C-U>Unite rails/model<CR>
-nnoremap <buffer><C-H>            :<C-U>Unite rails/controller<CR>
 
-nnoremap <buffer><C-H>c           :<C-U>Unite rails/config<CR>
-nnoremap <buffer><C-H>s           :<C-U>Unite rails/spec<CR>
-nnoremap <buffer><C-H>m           :<C-U>Unite rails/db -input=migrate<CR>
-nnoremap <buffer><C-H>l           :<C-U>Unite rails/lib<CR>
-nnoremap <buffer><expr><C-H>g     ':e '.b:rails_root.'/Gemfile<CR>'
-nnoremap <buffer><expr><C-H>r     ':e '.b:rails_root.'/config/routes.rb<CR>'
-nnoremap <buffer><expr><C-H>se    ':e '.b:rails_root.'/db/seeds.rb<CR>'
-nnoremap <buffer><C-H>ra          :<C-U>Unite rails/rake<CR>
-nnoremap <buffer><C-H>h           :<C-U>Unite rails/heroku<CR>
+"------------------------------------
+" Unite-rails.vim
+"------------------------------------
+"{{{
+nnoremap <silent><C-H><C-H><C-H>  :<C-U>Unite rails/view<CR>
+nnoremap <silent><C-H><C-H>       :<C-U>Unite rails/model<CR>
+nnoremap <silent><C-H>            :<C-U>Unite rails/controller<CR>
 
+nnoremap <silent><C-H>c           :<C-U>Unite rails/config<CR>
+nnoremap <silent><C-H>s           :<C-U>Unite rails/spec<CR>
+nnoremap <silent><C-H>m           :<C-U>Unite rails/db -input=migrate<CR>
+nnoremap <silent><C-H>l           :<C-U>Unite rails/lib<CR>
+nnoremap <silent><expr><C-H>g     ':e '.b:rails_root.'/Gemfile<CR>'
+nnoremap <silent><expr><C-H>r     ':e '.b:rails_root.'/config/routes.rb<CR>'
+nnoremap <silent><expr><C-H>se    ':e '.b:rails_root.'/db/seeds.rb<CR>'
+nnoremap <silent><C-H>ra          :<C-U>Unite rails/rake<CR>
+nnoremap <silent><C-H>h           :<C-U>Unite rails/heroku<CR>
 
 
 " mapping
@@ -123,11 +126,12 @@ autocmd QuickFixCmdPost *grep* cwindow
 " f検索　大文字小文字判別しない
 let g:clever_f_ignore_case = 1
 
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_start_length = 1
 
 "Buffer
 nnoremap <silent> <C-j> :bprev<CR>
 nnoremap <silent> <C-k> :bnext<CR>
+
+" snippets
+let g:neosnippet#snippets_directory = '~/.vim/snippets/'
 
 
