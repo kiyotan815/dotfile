@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "create-react-native-app": "^2.0.2",
+    "react-native-cli": "^2.0.1"
+  }
+}
