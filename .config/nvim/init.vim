@@ -34,9 +34,11 @@ colorscheme nefertiti
 syntax enable
 set t_Co=256 "256color
 
+" mapleader
+let mapleader = ","
+
 " show . file nerdtreee
 let NERDTreeShowHidden = 1
-
 
 set nobackup
 set noswapfile
@@ -69,6 +71,11 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 inoremap jj <Esc>
 noremap <S-h>   ^
 noremap <S-l>   $
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
+
 
 "Unite
 let g:unite_enable_start_insert=1
@@ -135,3 +142,29 @@ nnoremap <silent> <C-k> :bnext<CR>
 let g:neosnippet#snippets_directory = '~/.vim/snippets/'
 
 
+"unite keyconfig
+noremap <C-P> :Unite buffer<CR>
+noremap <C-N> :Unite -buffer-name=file file<CR>
+noremap <C-Z> :Unite file_mru<CR>
+" ウィンドウを分割して開く
+au FileType unite noremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite noremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+" ESCキーを2回押すと終了する
+au FileType unite noremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+
+" Rspec key
+nnoremap <leader>r :RunSpec<CR>
+nnoremap <leader>l :RunSpecLine<CR>
+nnoremap <leader>e :RunSpecLastRun<CR>
+nnoremap <leader>cr :RunSpecCloseResult<CR>
+
+" key config leader
+nnoremap <leader>d :bd<CR>
+nnoremap <leader>q :q!<CR>
+
+
+set completeopt+=noinsert

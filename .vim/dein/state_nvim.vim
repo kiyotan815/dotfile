@@ -10,4 +10,5 @@ let &runtimepath = '/Users/kiyotaibaragi/.config/nvim,/etc/xdg/nvim,/Users/kiyot
 filetype off
 let g:monster#completion#rcodetools#backend = "async_rct_complete"
 let g:deoplete#sources#omni#input_patterns = { "ruby" : '[^. *\t]\.\w*\|\h\w*::',}
+let g:run_rspec_bin = 'bundle exec rspec'
 autocmd dein-events InsertEnter * call dein#autoload#_on_event("InsertEnter", ['deoplete.nvim', 'vim-monster', 'vim-endwise', 'neosnippet', 'neosnippet-snippets'])

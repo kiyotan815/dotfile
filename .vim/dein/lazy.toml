@@ -85,3 +85,10 @@ on_i = 1
 
 [[plugins]]
 repo = 'takkii/ruby-dictionary3'
+
+# rspec-vim
+[[plugins]]
+repo = 'itmammoth/run-rspec.vim'
+hook_add ='''
+let g:run_rspec_bin = 'bundle exec rspec'
+'''

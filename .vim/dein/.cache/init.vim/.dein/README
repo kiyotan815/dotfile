@@ -1,6 +1,60 @@
-This is a mirror of http://www.vim.org/scripts/script.php?script_id=1677
+a unite.vim plugin for rails
 
-A dark scheme, with golden and blueish script.
-This is just a first try, there may be lots of things missing or wrong.
 
-See  http://leetless.de/vim.html for a screenshot.
+unite /app/models
+  :Unite rails/model
+
+unite /app/controllers
+  :Unite rails/controller
+
+unite /app/views
+  :Unite rails/view
+
+unite /app/helpers
+  :Unite rails/helper
+
+unite /app/jobs
+  :Unite rails/job
+
+unite /app/mailers
+  :Unite rails/mailer
+
+unite /lib
+  :Unite rails/lib
+
+unite /db
+  :Unite rails/db
+
+unite /config
+  :Unite rails/config
+
+unite /log
+  :Unite rails/log
+
+unite /public/javascripts
+  :Unite rails/javascript
+
+unite /public/stylesheets
+  :Unite rails/stylesheet
+
+unite bundle's commands
+  :Unite rails/bundle
+
+unite bundled gems
+  :Unite rails/bundled_gem
+
+unite /app/javascript
+  :Unite rails/webpack
+
+
+== maybe ==
+
+  unite routes
+    :Unite rails/route
+
+  unite root
+    :Unite rails/root
+
+  unite command
+    :Unite rails/command
+      > rake db:migrate

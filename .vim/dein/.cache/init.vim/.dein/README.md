@@ -1,40 +1,26 @@
-# material-theme
-Material theme for vim
+# Molokai Color Scheme for Vim
 
-Based on [Sublime Text 3 Material theme](https://github.com/equinusocio/material-theme) by [@equinusocio](https://github.com/equinusocio)
+Molokai is a Vim port of the monokai theme for TextMate originally created by Wimer Hazenberg.
 
-![VIM screenshot](http://i.imgur.com/VNxcv53.png)
+By default, it has a dark gray background based on the version created by Hamish Stuart Macpherson for the E editor.
 
-Installation
-------------
+![Gray Background](http://www.winterdom.com/weblog/content/binary/WindowsLiveWriter/MolokaiforVim_8602/molokai_normal_small_3.png)
 
-### Option 1: Manual installation
+![Molokai Original](http://www.winterdom.com/weblog/content/binary/WindowsLiveWriter/MolokaiforVim_8602/molokai_original_small_3.png)
 
-1.  Move `material-theme.vim` to your `.vim/colors` directory. After downloading the 
-    vim script or package:
+256-Color terminals are also supported, though there are some differences with the Gui version. Only the dark gray background style is supported on terminal vim at this time.
 
-        $ mv colors/material-theme.vim ~/.vim/colors/
+## Installation
 
-### Option 2: Pathogen installation ***(recommended)***
+Copy the file on your .vim/colors folder.
 
-1.  Download and install Tim Pope's [Pathogen].
+If you prefer the scheme to match the original monokai background color, put this in your .vimrc file: 
+```
+let g:molokai_original = 1
+```
 
-2.  Next, move or clone the `vim-material-theme` directory so that it is a subdirectory of the `.vim/bundle` directory.
+There is also an alternative scheme under development for color terminals which attempts to bring the 256 color version as close as possible to the the default (dark) GUI version. To access, add this to your .vimrc:
+```
+let g:rehash256 = 1
+```
 
-        $ cd ~/.vim/bundle
-        $ git clone https://github.com/jdkanani/vim-material-theme
-
-### Modify .vimrc
-
-After either Option 1 or Option 2 above, put the following two lines in your 
-.vimrc:
-
-    syntax enable
-    set background=dark
-    colorscheme material-theme
-
-or, for the light background mode of Material Theme:
-
-    syntax enable
-    set background=light
-    colorscheme material-theme

@@ -1,3 +1,4 @@
+eval "$(rbenv init -)"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -103,8 +104,8 @@ source $ZSH/oh-my-zsh.sh
 alias d='docker'
 alias dc='docker-compose'
 
-alias cdk='cd ~/workspace/kiyota-dev'
-alias cds='cd ~/workspace/kiyota-dev/THE_STUDY'
+alias cdk='cd ~/kiyota-dev'
+alias cdh='cd ~/kiyota-dev/hackshackhack'
 alias cdw='cd ~/workspace'
 alias c='clear'
 alias e='exit'
@@ -121,6 +122,9 @@ alias gc='git checkout'
 alias gb='git branch'
 alias gpo='git push origin'
 
+# ruby
+alias rb='ruby'
+
 # rails
 alias be='bundle exec'
 alias bi='bundle install'
@@ -134,3 +138,14 @@ alias rdm='rails db:migrate'
 alias rds='rails db:seed'
 alias rr='rails routes'
 
+
+# direnv
+eval "$(direnv hook zsh)"
+
+
+
+
+
+export PATH="/usr/local/opt/node@8/bin:$PATH"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
