@@ -1,60 +1,11 @@
-a unite.vim plugin for rails
+This plugin causes all trailing whitespace to be highlighted in red.
 
+To fix the whitespace errors, just call :FixWhitespace.  By default it
+operates on the entire file.  Pass a range (or use V to select some lines)
+to restrict the portion of the file that gets fixed.
 
-unite /app/models
-  :Unite rails/model
+The repo is at http://github.com/bronson/vim-trailing-whitespace
 
-unite /app/controllers
-  :Unite rails/controller
+Originally based on http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 
-unite /app/views
-  :Unite rails/view
-
-unite /app/helpers
-  :Unite rails/helper
-
-unite /app/jobs
-  :Unite rails/job
-
-unite /app/mailers
-  :Unite rails/mailer
-
-unite /lib
-  :Unite rails/lib
-
-unite /db
-  :Unite rails/db
-
-unite /config
-  :Unite rails/config
-
-unite /log
-  :Unite rails/log
-
-unite /public/javascripts
-  :Unite rails/javascript
-
-unite /public/stylesheets
-  :Unite rails/stylesheet
-
-unite bundle's commands
-  :Unite rails/bundle
-
-unite bundled gems
-  :Unite rails/bundled_gem
-
-unite /app/javascript
-  :Unite rails/webpack
-
-
-== maybe ==
-
-  unite routes
-    :Unite rails/route
-
-  unite root
-    :Unite rails/root
-
-  unite command
-    :Unite rails/command
-      > rake db:migrate
+An more complete alternative is at https://github.com/ntpeters/vim-better-whitespace

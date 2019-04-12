@@ -1,20 +1,21 @@
-let s:sids = {}
-function! s:sid(path) abort
-  if has_key(s:sids, a:path)
-    return s:sids[a:path]
-  endif
-  redir => scriptnames
-    silent! scriptnames
-  redir END
-  for line in split(scriptnames, '\n')
-    if line =~# a:path
-      let sid =  matchstr(line, '\v^\s*\zs\d+\ze')
-      let s:sids[a:path] = sid
-      return sid
-    endif
-  endfor
-endfunction
+let g:repo_root = fnamemodify(expand('<sfile>'), ':h:h')
 
-function! SID(name) abort
-  return function(printf("\<SNR>%d_%s", s:sid('autoload/lightline.vim'), a:name))
-endfunction
+call themis#option('exclude', g:repo_root . '/test/README.md')
+call themis#option('exclude', g:repo_root . '/test/.coveragerc')
+call themis#option('exclude', g:repo_root . '/test/Guardfile')
+call themis#helper('command').with(themis#helper('assert'))
+
+if $PROFILE_LOG !=# ''
+    execute 'profile' 'start' $PROFILE_LOG
+    " Note: covimerage causes UTF-8 decode error in autoload/clever_f/migemo
+    " before 8.0.1372
+    if has('patch-8.0.1372')
+        execute 'profile!' 'file' g:repo_root . '/autoload/*'
+    else
+        execute 'profile!' 'file' g:repo_root . '/autoload/clever_f.vim'
+        execute 'profile!' 'file' g:repo_root . '/autoload/clever_f/helper.vim'
+    endif
+    execute 'profile!' 'file' g:repo_root . '/plugin/*'
+endif
+
+call themis#option('runtimepath', expand(g:repo_root))

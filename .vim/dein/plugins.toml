@@ -6,6 +6,17 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 
+# autosave
+[[plugins]]
+repo = 'vim-scripts/vim-auto-save'
+hook_add = '''
+let g:auto_save_in_insert_mode = 0
+'''
+
+# vim-submode
+[[plugins]]
+repo = 'kana/vim-submode'
+
 # colorschema
 [[plugins]]
 repo = 'chriskempson/vim-tomorrow-theme'
@@ -83,3 +94,5 @@ repo = 'ngmy/vim-rubocop'
 # unite rails
 [[plugins]]
 repo = 'basyura/unite-rails'
+
+

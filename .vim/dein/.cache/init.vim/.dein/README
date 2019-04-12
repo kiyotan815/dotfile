@@ -1,60 +1,6 @@
-a unite.vim plugin for rails
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=4521
 
-
-unite /app/models
-  :Unite rails/model
-
-unite /app/controllers
-  :Unite rails/controller
-
-unite /app/views
-  :Unite rails/view
-
-unite /app/helpers
-  :Unite rails/helper
-
-unite /app/jobs
-  :Unite rails/job
-
-unite /app/mailers
-  :Unite rails/mailer
-
-unite /lib
-  :Unite rails/lib
-
-unite /db
-  :Unite rails/db
-
-unite /config
-  :Unite rails/config
-
-unite /log
-  :Unite rails/log
-
-unite /public/javascripts
-  :Unite rails/javascript
-
-unite /public/stylesheets
-  :Unite rails/stylesheet
-
-unite bundle's commands
-  :Unite rails/bundle
-
-unite bundled gems
-  :Unite rails/bundled_gem
-
-unite /app/javascript
-  :Unite rails/webpack
-
-
-== maybe ==
-
-  unite routes
-    :Unite rails/route
-
-  unite root
-    :Unite rails/root
-
-  unite command
-    :Unite rails/command
-      > rake db:migrate
+AutoSave - automatically save changes to disk without having to use :w (or any binding to it) every time a buffer has been modified.
+AutoSave is disabled by default, run :AutoSaveToggle to enable/disable AutoSave.
+If you want plugin to be always enabled it can be done with g:auto_save option (place 'let g:auto_save = 1' in your .vimrc).
+Inspired by the same feature in RubyMine text editor.

@@ -66,7 +66,7 @@ set encoding=utf-8
 set fileformats=unix,dos,mac
 
 
-
+" key config
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 inoremap jj <Esc>
 noremap <S-h>   ^
@@ -76,6 +76,40 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
+" split
+nnoremap s <Nop>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+nnoremap sn gt
+nnoremap sp gT
+nnoremap sr <C-w>r
+nnoremap s= <C-w>=
+nnoremap sw <C-w>w
+nnoremap so <C-w>_<C-w>|
+nnoremap sO <C-w>=
+nnoremap sN :<C-u>bn<CR>
+nnoremap sP :<C-u>bp<CR>
+nnoremap st :<C-u>tabnew<CR>
+nnoremap sT :<C-u>Unite tab<CR>
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
+nnoremap sq :<C-u>q<CR>
+nnoremap sQ :<C-u>bd<CR>
+
+call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+call submode#map('bufmove', 'n', '', '<', '<C-w><')
+call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
 "Unite
 let g:unite_enable_start_insert=1
@@ -127,12 +161,8 @@ nnoremap <C-]> g<C-]>
 " vimgrep quickfix-w 自動表示
 autocmd QuickFixCmdPost *grep* cwindow
 
-
-"set completeopt+=noinsert
-
 " f検索　大文字小文字判別しない
 let g:clever_f_ignore_case = 1
-
 
 "Buffer
 nnoremap <silent> <C-j> :bprev<CR>
@@ -166,5 +196,13 @@ nnoremap <leader>cr :RunSpecCloseResult<CR>
 nnoremap <leader>d :bd<CR>
 nnoremap <leader>q :q!<CR>
 
-
-set completeopt+=noinsert
+" autosave
+augroup Vimrc
+  autocmd!
+  autocmd InsertLeave * call <SID>auto_save()
+  function! s:auto_save()
+    if filewritable(expand('%'))
+      write
+    endif
+  endfunction
+augroup END
