@@ -27,6 +27,8 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#file#enable_buffer_path = 1
 let g:deoplete#max_list = 10000
 set previewheight=5
+highlight Pmenu ctermbg=8 guibg=#606060
+highlight PmenuSbar ctermbg=0 guibg=#d6d6d6
 inoremap <expr><tab> pumvisible() ? "\<C-n>" :
         \ neosnippet#expandable_or_jumpable() ?
         \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
@@ -85,9 +87,11 @@ on_ft = ['ruby']
 [[plugins]]
 repo = 'szw/vim-tags'
 
-
 [[plugins]]
 repo = 'takkii/ruby-dictionary3'
+
+
+
 
 # rspec-vim
 [[plugins]]
@@ -100,3 +104,24 @@ let g:run_rspec_bin = 'bin/rspec'
 # neosnippet
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
+
+
+
+
+# javascript
+
+# 定番
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+
+# highlight
+[[plugins]]
+repo = 'othree/yajs.vim'
+
+# es
+[[plugins]]
+repo = 'othree/es.next.syntax.vim'
+
+# cssindentation
+repo = 'othree/html5.vim'
+

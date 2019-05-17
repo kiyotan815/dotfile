@@ -1,4 +1,6 @@
 autocmd BufReadPost *.fugitiveblame setfiletype fugitiveblame
+" Detect syntax file.
+autocmd BufNewFile,BufRead *.snip,*.snippets set filetype=neosnippet
 " Officially distributed filetypes
 
 " Support functions {{{
@@ -107,6 +109,4 @@ au BufNewFile,BufRead [tT]horfile,*.thor	call s:setf('ruby')
 au BufNewFile,BufRead [vV]agrantfile		call s:setf('ruby')
 
 " vim: nowrap sw=2 sts=2 ts=8 noet fdm=marker:
-" Detect syntax file.
-autocmd BufNewFile,BufRead *.snip,*.snippets set filetype=neosnippet
 autocmd BufNewFile,BufRead *.slim setfiletype slim

@@ -19,7 +19,7 @@ ZSH_THEME="miloshadzic"
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+#ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -105,8 +105,9 @@ alias d='docker'
 alias dc='docker-compose'
 
 alias cdk='cd ~/kiyota-dev'
-alias cdh='cd ~/kiyota-dev/hackshackhack'
+alias cdh='cd ~/kiyota-dev/hackcrackhack'
 alias cdw='cd ~/workspace'
+alias cda='cd ~/kiyota-dev/atcorder'
 alias c='clear'
 alias e='exit'
 alias ls='ls -G'
@@ -149,3 +150,7 @@ eval "$(direnv hook zsh)"
 export PATH="/usr/local/opt/node@8/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+# g++ 自動実行
+function runcpp () { g++ -O2 $1; ./a.out }
+alias -s {c,cpp}=runcpp

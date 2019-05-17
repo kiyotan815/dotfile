@@ -1,3 +1,13 @@
+snippet exp
+abbr    expect
+  expect(${1}).to ${2}
+snippet expn
+  expect(${1}).to_not ${2}
+
+snippet expb
+abbr    expect
+  expect{ ${1} }.${2} ${3} ${4}
+
 snippet desc
 abbr    describe end
 prev_word '^'
@@ -63,10 +73,10 @@ abbr context after callback
     end
 
 snippet subjc
-    subject { ${1:FactoryGirl.create(:${2:name\})} }
+    subject { ${1:FactoryBot.create(:${2:name\})} }
 
 snippet subjb
-    subject { ${1:FactoryGirl.build(:${2:name\})} }
+    subject { ${1:FactoryBot.build(:${2:name\})} }
 
 snippet it
     it "${1}" do
@@ -290,8 +300,8 @@ abbr let! {}
     let!(:${1}) { ${2} }
 
 snippet letf
-    let(:${1:model}) do 
-        FactoryGirl.create(:${2:$1})
+    let(:${1:model}) do
+        FactoryBot.create(:${2:$1})
     end
 
 snippet atl
@@ -361,26 +371,29 @@ snippet moc
     ${1:var} = mock("${2:mock_name}"${3:, :null_object => true})
     ${4}
 
+snippet facat
+    FactoryBot.attributes_for(:${1})
+
 snippet facb
-    FactoryGirl.build(:${1})
+    FactoryBot.build(:${1})
 
 snippet fac
-    FactoryGirl(:${1}, ${2})
+    FactoryBot(:${1}, ${2})
 
 snippet facc
-    FactoryGirl.create(:${1})
+    FactoryBot.create(:${1})
 
 snippet facs
     sequence(:${1}) {|n| "${2}#{n}"}
 
 snippet facn
-    FactoryGirl.next(:${1:sequence-name})
+    FactoryBot.next(:${1:sequence-name})
 
 snippet faca
     f.${1:model} {|a| a.association(:${2:$1})}
 
 snippet facd
-    FactoryGirl.define do
+    FactoryBot.define do
         ${1}
     end
 
@@ -388,3 +401,7 @@ snippet facf
     factory ${1:name} do
         ${2}
     end
+snippet aggregate
+  aggregate_failures do
+    ${1}
+  end

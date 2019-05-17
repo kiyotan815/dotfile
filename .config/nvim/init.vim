@@ -37,6 +37,9 @@ set t_Co=256 "256color
 " mapleader
 let mapleader = ","
 
+" clipboard
+set clipboard=unnamed
+
 " show . file nerdtreee
 let NERDTreeShowHidden = 1
 
@@ -65,6 +68,11 @@ set hlsearch
 set encoding=utf-8
 set fileformats=unix,dos,mac
 
+" terminal
+" 移動時自動で入力に
+autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
+" terminal normalモードに
+tnoremap <C-q> <C-\><C-n>
 
 " key config
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
@@ -75,6 +83,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
+inoremap <C-b> <ESC>o
+
 
 " split
 nnoremap s <Nop>
@@ -170,6 +180,42 @@ nnoremap <silent> <C-k> :bnext<CR>
 
 " snippets
 let g:neosnippet#snippets_directory = '~/.vim/snippets/'
+nnoremap <Space>se :<C-U>NeoSnippetEdit<CR>
+
+augroup filetypedetect
+  autocmd!  BufEnter *_spec.rb NeoSnippetSource ~/.vim/snippets/rspec.snip
+  autocmd!  BufEnter *rb call s:LoadRailsSnippet()
+augroup END
+
+function! s:LoadRailsSnippet()
+  " カレントディレクトリのディレクトリパス（絶対パス）取得
+  let s:current_file_path = expand("%:p:h")
+  " capybara
+  if ( s:current_file_path =~ "spec/system" )
+    NeoSnippetSource ~/.vim/snippets/ruby.capybara.snip
+  endif
+
+  " appフォルダ内でなければ無視
+  if ( s:current_file_path !~ "app/" )
+    return
+  " app/modelsフォルダ内ならば
+  elseif ( s:current_file_path =~ "app/models" )
+    NeoSnippetSource ~/.vim/snippets/ruby.rails.model.snip
+  " app/controllersフォルダ内ならば
+  elseif ( s:current_file_path =~ "app/controllers" )
+   NeoSnippetSource ~/.vim/snippets/ruby.rails.controller.snip
+  " app/viewsフォルダ内ならば
+  elseif ( s:current_file_path =~ "app/views" )
+    NeoSnippetSource ~/.vim/snippets/ruby.rails.view.snip
+  " app/helpersフォルダ内ならば
+  elseif ( s:current_file_path =~ "app/helpers" )
+    NeoSnippetSource ~/.vim/snippets/helper.rails.snip
+  " app/assetsフォルダ内ならば
+  elseif ( s:current_file_path =~ "app/assets" )
+    NeoSnippetSource ~/.vim/snippets/asset.rails.snip
+  endif
+endfunction
+
 
 
 "unite keyconfig

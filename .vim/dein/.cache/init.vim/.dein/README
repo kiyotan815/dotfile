@@ -1,6 +1,11 @@
-This is a mirror of http://www.vim.org/scripts/script.php?script_id=4521
+This plugin causes all trailing whitespace to be highlighted in red.
 
-AutoSave - automatically save changes to disk without having to use :w (or any binding to it) every time a buffer has been modified.
-AutoSave is disabled by default, run :AutoSaveToggle to enable/disable AutoSave.
-If you want plugin to be always enabled it can be done with g:auto_save option (place 'let g:auto_save = 1' in your .vimrc).
-Inspired by the same feature in RubyMine text editor.
+To fix the whitespace errors, just call :FixWhitespace.  By default it
+operates on the entire file.  Pass a range (or use V to select some lines)
+to restrict the portion of the file that gets fixed.
+
+The repo is at http://github.com/bronson/vim-trailing-whitespace
+
+Originally based on http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+
+An more complete alternative is at https://github.com/ntpeters/vim-better-whitespace
