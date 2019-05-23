@@ -1,11 +1,21 @@
-#!/usr/bin/env rake
+require 'fileutils'
+require 'pathname'
 
-task :ci => [:dump, :test]
+files = Dir.glob('**/*.{vim,txt}').map {|f| Pathname(f) }
+name = 'unite-colorscheme'
 
-task :dump do
-  sh 'vim --version'
-end
+desc 'generate zip archive of the project, asking you the version'
+task :zip do
+  print "version: "
+  version = STDIN.gets.chomp
+  print "OK? "
+  exit unless STDIN.gets.chomp == 'y'
 
-task :test do
-  sh 'bundle exec vim-flavor test'
+  sh "mkdir -p #{name}-#{version}"
+  files.each do |f|
+    sh "mkdir -p #{name}-#{version}/#{f.dirname}"
+    sh "cp #{f} #{name}-#{version}/#{f}"
+  end
+  sh "zip -r #{name}-#{version}.zip #{name}-#{version}"
+  sh "rm -r #{name}-#{version}"
 end

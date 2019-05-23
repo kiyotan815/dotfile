@@ -6,13 +6,22 @@ endif
 set runtimepath+=~/dotfiles/.vim/dein/repos/github.com/Shougo/dein.vim
 let s:dein_dir = expand('~/dotfiles/.vim/dein')
 
+
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+endif
+
 " Required:
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
-  call dein#load_toml(s:dein_dir . '/plugins.toml')
-  call dein#load_toml(s:dein_dir . '/lazy.toml')
-
+  let s:toml      = s:dein_dir . '/plugins.toml'
+  let s:lazy_toml = s:dein_dir . '/lazy.toml'
+  call dein#load_toml(s:toml,      {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
   " Required:
   call dein#end()
@@ -26,7 +35,6 @@ filetype plugin indent on
 if dein#check_install()
   call dein#install()
 endif
-
 
 
 
@@ -68,7 +76,7 @@ set hlsearch
 set encoding=utf-8
 set fileformats=unix,dos,mac
 
-" terminal
+""" terminal
 " 移動時自動で入力に
 autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
 " terminal normalモードに
@@ -217,7 +225,6 @@ function! s:LoadRailsSnippet()
 endfunction
 
 
-
 "unite keyconfig
 noremap <C-P> :Unite buffer<CR>
 noremap <C-N> :Unite -buffer-name=file file<CR>
@@ -252,3 +259,20 @@ augroup Vimrc
     endif
   endfunction
 augroup END
+
+
+augroup MyVimrc
+  autocmd!
+augroup END
+
+function! EnableJavascript()
+  " Setup used libraries
+  let g:used_javascript_libs = 'jquery,underscore,react,flux,jasmine,d3'
+  let b:javascript_lib_use_jquery = 1
+  let b:javascript_lib_use_underscore = 1
+  let b:javascript_lib_use_react = 1
+  let b:javascript_lib_use_flux = 1
+  let b:javascript_lib_use_jasmine = 1
+  let b:javascript_lib_use_d3 = 1
+endfunction
+autocmd MyVimrc FileType javascript,javascript.jsx call EnableJavascript()

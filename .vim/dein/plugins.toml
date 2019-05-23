@@ -86,30 +86,4 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'mattn/emmet-vim'
 
-# rubocop vim
-[[plugins]]
-repo = 'ngmy/vim-rubocop'
-
-
-# unite rails
-[[plugins]]
-repo = 'basyura/unite-rails'
-
-
-# javascript
-
-# 定番
-[[plugins]]
-repo = 'pangloss/vim-javascript'
-
-# highlight
-[[plugins]]
-repo = 'othree/yajs.vim'
-
-# es
-[[plugins]]
-repo = 'othree/es.next.syntax.vim'
-
-# cssindentation
-repo = 'othree/html5.vim'
 

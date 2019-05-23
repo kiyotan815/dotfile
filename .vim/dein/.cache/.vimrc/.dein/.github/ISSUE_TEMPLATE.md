@@ -1,30 +1,28 @@
-# Problems summary
+<!--- To assist in resolving your issue, provide as much information as possible. -->
 
+### Environment
+<!--- Describe your Vim/NERDTree setup. -->
 
-## Expected
+* Operating System: 
+* Vim version `:version`: 
+* NERDTree version `git rev-parse --short HEAD`: 
+* NERDTree settings applied in your vimrc, if any:
+    ```vim
+    ```
 
+### Process
+<!--- List the steps that will recreate the issue. -->
 
-## Environment Information
- * OS:
- * Vim version:
+1. 
 
+### Current Result
+<!--- Describe what you you currently experience from this process. -->
 
-## Provide a minimal .vimrc with less than 50 lines (Required!)
+### Expected Result
+<!--- Describe what you would have expected from this process. -->
 
-```vim
-" Your minimal .vimrc
-set runtimepath+=~/path/to/unite.nvim/
-```
+### Screenshot(s)
 
+### Possible Fix
+<!--- If you have explored the code, share what you've found. -->
 
-## The reproduce ways from Vim starting (Required!)
-
- 1. foo
- 2. bar
- 3. baz
-
-
-## Screen shot (if possible)
-
-
-## Upload the log messages by `:redir` and `:message`
