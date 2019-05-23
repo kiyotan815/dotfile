@@ -87,7 +87,7 @@ on_ft = ['ruby']
 
 [[plugins]]
 repo = 'tpope/vim-rails'
-on_ft = ['ruby']
+on_ft =['ruby', 'eruby']
 
 
 [[plugins]]
@@ -106,6 +106,8 @@ let g:run_rspec_bin = 'bin/rspec'
 # unite rails
 [[plugins]]
 repo = 'basyura/unite-rails'
+on_ft = ['ruby', 'eruby']
+
 
 
 # rubocop vim
