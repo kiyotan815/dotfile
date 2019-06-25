@@ -1,15 +1,8 @@
-all : emmet-vim.zip
+.PHONY: test install-dev
 
-remove-zip:
-	-rm doc/tags
-	-rm emmet-vim.zip
+test: test/vim-themis
+	test/vim-themis/bin/themis --reporter dot test
 
-emmet-vim.zip: remove-zip
-	zip -r emmet-vim.zip autoload plugin doc
 
-release: emmet-vim.zip
-	vimup update-script emmet.vim
-
-test:
-	@-rm -f test.log 2> /dev/null
-	@vim -N -c "let &rtp .= ',' . getcwd()" -c "so unittest.vim" -c EmmetUnitTest! || cat test.log || exit 1
+test/vim-themis:
+	git clone git://github.com/thinca/vim-themis test/vim-themis

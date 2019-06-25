@@ -249,6 +249,8 @@ nnoremap <leader>cr :RunSpecCloseResult<CR>
 nnoremap <leader>d :bd<CR>
 nnoremap <leader>q :q!<CR>
 
+nmap s <Plug>(easymotion-overwin-f2)
+
 " autosave
 augroup Vimrc
   autocmd!

@@ -3,7 +3,7 @@ eval "$(rbenv init -)"
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/kiyotaibaragi/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -154,3 +154,6 @@ export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 # g++ 自動実行
 function runcpp () { g++ -O2 $1; ./a.out }
 alias -s {c,cpp}=runcpp
+
+# mylinux command
+PATH=~/dotfiles/.bin:$PATH

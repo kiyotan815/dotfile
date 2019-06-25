@@ -13,6 +13,9 @@ hook_add = '''
 let g:auto_save_in_insert_mode = 0
 '''
 
+# easy motion
+repo = 'Lokaltog/vim-easymotion'
+
 # vim-submode
 [[plugins]]
 repo = 'kana/vim-submode'
@@ -86,4 +89,5 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'mattn/emmet-vim'
 
-
+# () '' 補完
+repo = 'cohama/lexima.vim'
